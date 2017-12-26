@@ -21,14 +21,14 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 .table_wrap {
-    padding: 30px 10px;
+    padding: 0 10px;
     max-width: 600px;
     margin: 0 auto;
 }
 .table_wrap h2 {
     font-size: 16px;
     font-weight: bold;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 .table_wrap table {
     margin: 0 auto;
@@ -94,6 +94,17 @@ table th , table td {
     height: 36px;
     font-size: 14px;
 }
-.btn_wrap input:focus {
-
+.tips {
+    font-size: 12px;
+    color: #999;
+    padding-top: 30px;
+}
+.tips p {
+    margin-bottom: 5px;
+}
+.tips p.image_wrap {
+    text-align: center;
+}
+.tips p.image_wrap img {
+    width: 120px;
 }
