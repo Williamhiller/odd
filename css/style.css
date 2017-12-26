@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+a,big,canvas,dd,div,dl,dt,em,footer,form,h1,h2,h3,h4,h5,h6,header,html,i,img,input,label,li,nav,ol,p,section,small,span,strong,table,tbody,td,tfoot,th,thead,tr,tt,ul{margin:0;padding:0;outline:0;vertical-align:baseline;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit}
+*,::after,::before{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+li,ol,ul{list-style:none}
+button{border:none}
+table {border-spacing: 0;  border-collapse: collapse; }
+button,input,select,textarea{outline:0;font-family:inherit}
+img{border:none}
+a{text-decoration:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-family: "Microsoft YaHei", Arial , sans-serif;
+    line-height: 1.5;
+    color: #666;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.table_wrap {
+    padding: 30px 10px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.table_wrap h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.table_wrap table {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+}
+table tr {
+    /*border-bottom: 1px solid #e5e5e5;*/
+}
+.table_wrap table th {
+    padding: 10px 0;
+}
+table th , table td {
+    /*border: 1px solid red;*/
+}
+.table_wrap table td {
+    padding: 6px;
+    text-align: center;
+    max-width: 20%;
+    overflow: hidden;
+}
+.table_wrap table td.tit {
+    text-align: left;
+}
+.table_wrap table .tit,.table_wrap table .last {
+    width: 20%;
+}
+.table_wrap table .last {
+    text-align: center;
+}
+.table_wrap input {
+    text-align: center;
+    border: 1px solid #e5e5e5;
+    height: 28px;
+    line-height: 28px;
+    width: 100%;
+}
+.btn_wrap {
+    text-align: justify;
+}
+.btn_wrap button, .btn_wrap input {
+    display: inline-block;
+    font-size: 16px;
+}
+.btn_wrap button {
+    width: 23.5%;
+    line-height: 28px;
+    background-color: transparent;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    color: #666;
+}
+.btn_wrap button.on {
+    border-color: #DA2536;
+    color: #DA2536;
+}
+.btn_wrap input {
+    width: 100%;
+    text-align: left;
+    padding: 10px 1em;
+    margin: 10px 0;
+    height: 36px;
+    font-size: 14px;
+}
+.btn_wrap input:focus {
+
+}

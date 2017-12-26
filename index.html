@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0"/>
+
+    <title>Wiiliamhiller</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
+
+</head>
+<body ng-app="myApp">
+    <div class="table_wrap" ng-controller="myCtrl">
+        <div>
+            <h2>返还率计算</h2>
+            <table>
+                <tr>
+                    <th class="tit"></th>
+                    <th>胜</th>
+                    <th>平</th>
+                    <th>负</th>
+                    <th class="last">返还率</th>
+                </tr>
+                <tr>
+                    <td class="tit"><span>赔率</span></td>
+                    <td><input type="number" ng-model="odd.win" ng-change="oddChange()"></td>
+                    <td><input type="number" ng-model="odd.draw" ng-change="oddChange()"></td>
+                    <td><input type="number" ng-model="odd.lose" ng-change="oddChange()"></td>
+                    <td class="last"><span>{{odd.kickback | number:4}}</span></td>
+                </tr>
+                <tr>
+                    <td class="tit"><span>概率</span></td>
+                    <td><span>{{prob.win*100 | number:2}}</span></td>
+                    <td><span>{{prob.draw*100 | number:2}}</span></td>
+                    <td><span>{{prob.lose*100 | number:2}}</span></td>
+                    <td class="last"></td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <h2>赔率转换</h2>
+            <div class="btn_wrap">
+                <input type="number" placeholder="其它 - 手动输入赔付率" ng-model="odd_c.kickback" ng-change="oddTransfer(odd_c.kickback)">
+                <button ng-class="{'on':odd_c.kickback===89}" ng-click="oddTransfer(89)">89</button>
+                <button ng-class="{'on':odd_c.kickback===92}" ng-click="oddTransfer(92)">92</button>
+                <button ng-class="{'on':odd_c.kickback===94}" ng-click="oddTransfer(94)">94</button>
+                <button ng-class="{'on':odd_c.kickback===96}" ng-click="oddTransfer(96)">96</button>
+                <span style="display: inline-block;width: 100%"></span>
+            </div>
+            <table>
+                <tr>
+                    <th class="tit"></th>
+                    <th>胜</th>
+                    <th>平</th>
+                    <th>负</th>
+                    <th class="last">返还率</th>
+                </tr>
+                <tr>
+                    <td class="tit"><span>赔率</span></td>
+                    <td><span>{{odd_c.win | number:3}}</span></td>
+                    <td><span>{{odd_c.draw | number:3}}</span></td>
+                    <td><span>{{odd_c.lose | number:3}}</span></td>
+                    <td class="last"></td>
+                </tr>
+            </table>
+        </div>
+        <!--<div class="tips">-->
+            <!--<p>闲暇之余写的</p>-->
+        <!--</div>-->
+
+    </div>
+</body>
+</html>
