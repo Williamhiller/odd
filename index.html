@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0"/>
 
     <title>Wiiliamhiller</title>
+    <link rel="shortcut icon" href="favicon.ico">
 
     <link rel="stylesheet" href="css/style.css">
     <script src="js/angular.min.js"></script>
@@ -63,7 +64,7 @@
                     <td><span>{{odd_c.win | number:3}}</span></td>
                     <td><span>{{odd_c.draw | number:3}}</span></td>
                     <td><span>{{odd_c.lose | number:3}}</span></td>
-                    <td class="last"></td>
+                    <td class="last">{{odd_c.kickback | number:4}}</td>
                 </tr>
             </table>
         </div>

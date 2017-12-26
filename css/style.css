@@ -80,6 +80,7 @@ table th , table td {
     border: 1px solid #aaa;
     border-radius: 5px;
     color: #666;
+    cursor: pointer;
 }
 .btn_wrap button.on {
     border-color: #DA2536;

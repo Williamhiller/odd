@@ -47,7 +47,7 @@ app.controller('myCtrl', ['$scope',function(s) {
             return;
         }
 
-        s.odd_c.kickback_s = val;
+        s.odd_c.kickback = val;
         // 计算转换后的赔率
         s.odd_c.win = _val/s.prob.win;
         s.odd_c.draw = _val/s.prob.draw;
