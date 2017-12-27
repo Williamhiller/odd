@@ -27,7 +27,7 @@ body {
     background: linear-gradient(to bottom, #dcebf1 0%, #fafcfd 30%);
 }
 .table_wrap {
-    padding: 20px 10px 0;
+    padding: 0 10px 20px;
     max-width: 600px;
     margin: 0 auto;
 }
@@ -67,10 +67,12 @@ table th , table td {
 }
 .table_wrap input {
     text-align: center;
-    border: 1px solid #e5e5e5;
     height: 28px;
     line-height: 28px;
     width: 100%;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 .btn_wrap {
     text-align: justify;
@@ -83,9 +85,9 @@ table th , table td {
     width: 23.5%;
     line-height: 28px;
     background-color: transparent;
-    border: 1px solid #aaa;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    color: #666;
+    color: #777;
     cursor: pointer;
 }
 .btn_wrap button.on {
@@ -110,6 +112,7 @@ table th , table td {
 }
 .tips p.image_wrap {
     text-align: center;
+    padding-top: 20px;
 }
 .tips p.image_wrap img {
     width: 50%;
