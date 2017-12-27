@@ -27,7 +27,7 @@ body {
     background: linear-gradient(to bottom, #dcebf1 0%, #fafcfd 30%);
 }
 .table_wrap {
-    padding: 0 10px 20px;
+    padding: 0 15px 20px;
     max-width: 600px;
     margin: 0 auto;
 }
@@ -72,7 +72,6 @@ table th , table td {
     width: 100%;
     border: none;
     border-radius: 3px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 .btn_wrap {
     text-align: justify;
@@ -101,6 +100,7 @@ table th , table td {
     margin: 10px 0;
     height: 36px;
     font-size: 14px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 .tips {
     font-size: 12px;
