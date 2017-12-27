@@ -41,14 +41,8 @@ body {
     width: 100%;
     max-width: 100%;
 }
-table tr {
-    /*border-bottom: 1px solid #e5e5e5;*/
-}
 .table_wrap table th {
     padding: 10px 0;
-}
-table th , table td {
-    /*border: 1px solid red;*/
 }
 .table_wrap table td {
     padding: 6px;
