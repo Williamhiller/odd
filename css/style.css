@@ -20,11 +20,11 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: #fafcfd;
-    background: -webkit-linear-gradient(top, #dcebf1 0%, #fafcfd 30%);
-    background: -moz-linear-gradient(top, #dcebf1 0%, #fafcfd 30%);
-    background: -o-linear-gradient(top, #dcebf1 0%, #fafcfd 30%);
-    background: -ms-linear-gradient(top, #dcebf1 0%, #fafcfd 30%);
-    background: linear-gradient(to bottom, #dcebf1 0%, #fafcfd 30%);
+    background: -webkit-linear-gradient(top, #dcebf1 0%, #fafcfd 40%);
+    background: -moz-linear-gradient(top, #dcebf1 0%, #fafcfd 40%);
+    background: -o-linear-gradient(top, #dcebf1 0%, #fafcfd 40%);
+    background: -ms-linear-gradient(top, #dcebf1 0%, #fafcfd 40%);
+    background: linear-gradient(to bottom, #dcebf1 0%, #fafcfd 40%);
 }
 .table_wrap {
     padding: 0 15px 20px;
