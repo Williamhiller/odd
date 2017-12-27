@@ -104,7 +104,7 @@ table th , table td {
 }
 .tips {
     font-size: 12px;
-    color: #999;
+    color: #888;
     padding-top: 30px;
 }
 .tips p {
@@ -112,7 +112,7 @@ table th , table td {
 }
 .tips p.image_wrap {
     text-align: center;
-    padding-top: 20px;
+    padding-top: 10px;
 }
 .tips p.image_wrap img {
     width: 50%;
