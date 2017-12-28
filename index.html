@@ -47,7 +47,7 @@
         <div>
             <h2>赔率转换</h2>
             <div class="btn_wrap">
-                <input type="number" placeholder="其它 - 手动输入赔付率" ng-model="odd_c.kickback" ng-change="oddTransfer(odd_c.kickback)">
+                <input type="number" placeholder="其它 - 手动输入返还率" ng-model="odd_c.kickback" ng-change="oddTransfer(odd_c.kickback)">
                 <button ng-class="{'on':odd_c.kickback===89}" ng-click="oddTransfer(89)">89</button>
                 <button ng-class="{'on':odd_c.kickback===92}" ng-click="oddTransfer(92)">92</button>
                 <button ng-class="{'on':odd_c.kickback===94}" ng-click="oddTransfer(94)">94</button>
@@ -63,7 +63,7 @@
                     <th class="last">返还率</th>
                 </tr>
                 <tr>
-                    <td class="tit"><span>转换赔率</span></td>
+                    <td class="tit"><span>普通转换</span></td>
                     <td><span>{{odd_c.win | number:3}}</span></td>
                     <td><span>{{odd_c.draw | number:3}}</span></td>
                     <td><span>{{odd_c.lose | number:3}}</span></td>
