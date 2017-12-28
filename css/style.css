@@ -9,6 +9,9 @@ button,input,select,textarea{outline:0;font-family:inherit}
 img{border:none}
 a{text-decoration:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
 
+html , body {
+    min-height: 100%;
+}
 body {
     margin: 0;
     overflow-x: hidden;
@@ -27,7 +30,7 @@ body {
     background: linear-gradient(to bottom, #dcebf1 0%, #fafcfd 40%);
 }
 .table_wrap {
-    padding: 0 15px 20px;
+    padding: 0 12px 20px;
     max-width: 600px;
     margin: 0 auto;
 }
@@ -48,6 +51,7 @@ body {
     padding: 6px;
     text-align: center;
     max-width: 20%;
+    white-space: nowrap;
     overflow: hidden;
 }
 .table_wrap table td.tit {
