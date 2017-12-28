@@ -46,6 +46,15 @@ function checkVal(val) {
 
     return false;
 }
+var val = 1.5;
+function reduce() {
+    if(val > 0.1) {
+        val = val*0.95;
+        console.log((val + 1).toFixed(2));
+        reduce();
+    }
+}
+reduce();
 
 var app = angular.module('myApp', []);
 app.controller('myCtrl', ['$scope',function(s) {
