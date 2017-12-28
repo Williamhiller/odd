@@ -94,9 +94,11 @@ body {
 .btn_wrap input {
     width: 100%;
     text-align: left;
-    padding: 2px 1em 0;
+    /*padding: 2px 1em 0;*/
     margin: 10px 0;
+    padding: 0 1em;
     height: 36px;
+    line-height: 34px;
     font-size: 14px;
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
