@@ -18,9 +18,12 @@ var normal_odds = [
     9.00,9.50,10.0,10.50
     ,11,12,13,15,17,19,21,23,26
 ];
+
+
 // 匹配最接近的赔率
 function getSmartOdd(odd) {
     var _arr = [],
+        _sort_arr,
         _val ,
         _index,
         _odd;
@@ -29,10 +32,16 @@ function getSmartOdd(odd) {
     _arr = normal_odds.map(function (item) {
         return Math.abs(item - _odd)
     });
-    _val = _arr.reduce(function (preValue,curValue) {
-        return preValue < curValue ? preValue : curValue;
+    _sort_arr = _arr.concat().sort(function (a,b) {
+        return a-b;
     });
-    _index = _arr.indexOf(_val);
+
+    // _val = _arr.reduce(function (preValue,curValue) {
+    //     return preValue < curValue ? preValue : curValue;
+    // });
+    // _index = _arr.indexOf(_val);
+
+    _index = _arr.indexOf(_sort_arr[0]);
 
     return normal_odds[_index]
 }
@@ -46,15 +55,6 @@ function checkVal(val) {
 
     return false;
 }
-var val = 1.5;
-function reduce() {
-    if(val > 0.1) {
-        val = val*0.95;
-        console.log((val + 1).toFixed(2));
-        reduce();
-    }
-}
-reduce();
 
 var app = angular.module('myApp', []);
 app.controller('myCtrl', ['$scope',function(s) {
