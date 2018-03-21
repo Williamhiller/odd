@@ -20,6 +20,7 @@ var normal_odds = [
 ];
 
 
+
 // 匹配最接近的赔率
 function getSmartOdd(odd) {
     var _arr = [],
@@ -47,12 +48,11 @@ function getSmartOdd(odd) {
 }
 // 检测合法性
 function checkVal(val) {
-
     if(val !== null && typeof val !== "undefined" && val !== "") {
         return true;
     }else {
-    }
 
+    }
     return false;
 }
 
@@ -114,6 +114,53 @@ app.controller('myCtrl', ['$scope',function(s) {
             c = arr.lose;
         return a*b*c/(a*b+a*c+b*c);
     }
+    s.homeIndex = '50';
+    s.visitIndex = '50';
+    s.historyIndex = 0;
+    s.dataHomeIndex = [];
+    s.dataVisitIndex = [];
+    s.dataHistoryIndex = [];
+
+    for(var i=0;i<6;i++){
+        s.dataHomeIndex.push({
+            l : '',
+            r : ''
+        });
+        s.dataVisitIndex.push({
+            l : '',
+            r : ''
+        });
+        s.dataHistoryIndex.push({
+            l : '',
+            r : ''
+        });
+    }
+
+    s.$watch('dataHomeIndex',function (newVal, oldVal) {
+        var homeIndex = 0;
+        newVal.map(function (item,index) {
+            var val = (item.l !== ''? item.l : item.r !== ''?item.r : 0);
+            homeIndex += val * (6-index)
+        });
+        s.homeIndex = (homeIndex*100/63).toFixed(0);
+    },true);
+    s.$watch('dataVisitIndex',function (newVal, oldVal) {
+        var visitIndex = 0;
+        newVal.map(function (item,index) {
+            var val = (item.l !== ''? item.l : item.r !== ''?item.r : 0);
+            visitIndex += val * (6-index)
+        });
+        s.visitIndex = (visitIndex*100/63).toFixed(0);
+    },true);
+    s.$watch('dataHistoryIndex',function (newVal, oldVal) {
+        var visitIndex = 0;
+        newVal.map(function (item,index) {
+            var val = (item.l !== ''? item.l : item.r !== ''?item.r : 0);
+            visitIndex += val * (6-index)
+        });
+        s.visitIndex = (visitIndex*100/63).toFixed(0);
+    },true);
+
 }]);
 
 
