@@ -15,8 +15,8 @@ var normal_odds = [
     4.00,4.10,4.20,4.33,4.40,4.50,4.60,4.75,4.80,
     5.00,5.50,6.00,6.50,
     7.00,7.50,8.00,8.50,
-    9.00,9.50,10.0,10.50
-    ,11,12,13,15,17,19,21,23,26
+    9.00,9.50,10.0,10.50,
+    11,12,13,15,17,19,21,23,26
 ];
 
 
@@ -154,14 +154,15 @@ app.controller('myCtrl', ['$scope',function(s) {
         s.visitIndex = (visitIndex*100/63).toFixed(0);
     },true);
     s.$watch('dataHistoryIndex',function (newVal, oldVal) {
-        var visitIndex = 0;
+        var hitoryIndex = 0;
         newVal.map(function (item,index) {
             var val = (item.l !== ''? item.l : item.r !== ''?item.r : 0);
-            visitIndex += val * (6-index)
+            hitoryIndex += val * (6-index)
         });
-        s.visitIndex = (visitIndex*100/63).toFixed(0);
+        s.historyIndex = (hitoryIndex*100/21).toFixed(0);
     },true);
 
 }]);
+
 
 
