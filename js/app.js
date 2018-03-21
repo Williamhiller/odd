@@ -114,6 +114,7 @@ app.controller('myCtrl', ['$scope',function(s) {
             c = arr.lose;
         return a*b*c/(a*b+a*c+b*c);
     }
+
     s.homeIndex = '50';
     s.visitIndex = '50';
     s.historyIndex = 0;
