@@ -119,8 +119,11 @@ body {
     width: 50%;
 }
 .pull_index {
-    margin-top: 20px;
     text-align: center;
+}
+.pull_index h2 {
+    text-align: left;
+    margin-bottom: 10px;
 }
 .pull_index input{
     background-color: transparent;

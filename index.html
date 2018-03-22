@@ -78,9 +78,10 @@
             </table>
         </div>
         <div class="pull_index">
+            <h2>拉力指数</h2>
             <div class="row">
                 <div class="col">
-                    <h3>主队指数：{{homeIndex}}</h3>
+                    <h3>主队：{{homeIndex}}</h3>
                     <table>
                         <tr>
                             <th>主场</th>
@@ -94,7 +95,7 @@
                 </div>
                 <div class="col col-10"></div>
                 <div class="col">
-                    <h3>客队指数：{{visitIndex}}</h3>
+                    <h3>客队：{{visitIndex}}</h3>
                     <table>
                         <tr>
                             <th>主场</th>
@@ -110,7 +111,7 @@
             <div class="row" style="margin-top: 20px">
                 <div class="col"></div>
                 <div class="col col-40">
-                    <h3>往绩指数：{{historyIndex}} /21</h3>
+                    <h3>往绩指数：{{historyIndex}} /100</h3>
                     <table>
                         <tr>
                             <th>主场</th>
@@ -126,6 +127,8 @@
             </div>
         </div>
         <div class="tips">
+            <p>拉力指数-因为记忆留存时间较短，越近的比赛印象更深。例如极端情况，主队3连败后3连胜，客队3连胜后3连败，近况都是303，导致仅看数字无法量化双方拉力。使用拉力指数计算就是主队71，客队29。不然仅凭感觉容易判断失误。</p>
+            <p>下一步会完善往绩指数，以及添加自定义场次（目前仅6场），最后为主客场分配不同计算权重。</p>
             <p>QQ : 1747768963
             </p>
         </div>
