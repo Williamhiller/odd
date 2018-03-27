@@ -29,6 +29,7 @@ body {
     background: -ms-linear-gradient(top, #dcebf1 0%, #fafcfd 40%);
     background: linear-gradient(to bottom, #dcebf1 0%, #fafcfd 40%);
 }
+small {font-size: 75%}
 .table_wrap {
     padding: 0 12px 20px;
     max-width: 600px;
