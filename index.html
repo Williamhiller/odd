@@ -128,28 +128,23 @@
         </div>
         <div class="pull_index">
             <h2>进球指数<small>（大小球）</small></h2>
-            <p>算法设计中...</p>
-            <!--<div class="row">-->
-                <!--<div class="col">-->
-                    <!--<h3>主队：{{homeIndex}}</h3>-->
-                    <!--<table>-->
-                        <!--<tr ng-repeat="data in dataHomeIndex">-->
-                            <!--<td><input type="text" ng-model="data.l" title=""></td>-->
-                            <!--<td><input type="text" ng-model="data.r" title=""></td>-->
-                        <!--</tr>-->
-                    <!--</table>-->
-                <!--</div>-->
-                <!--<div class="col col-10"></div>-->
-                <!--<div class="col">-->
-                    <!--<h3>客队：{{visitIndex}}</h3>-->
-                    <!--<table>-->
-                        <!--<tr ng-repeat="data in dataVisitIndex">-->
-                            <!--<td><input type="text" ng-model="data.l" title=""></td>-->
-                            <!--<td><input type="text" ng-model="data.r" title=""></td>-->
-                        <!--</tr>-->
-                    <!--</table>-->
-                <!--</div>-->
-            <!--</div>-->
+            <div class="row">
+                <div class="col"></div>
+                <div class="col col-40">
+                    <h3>均值：{{goalIndex.average | number:2}}</h3>
+                    <table>
+                        <tr>
+                            <th>{{goalIndex.left | number:2}}</th>
+                            <th>{{goalIndex.right | number:2}}</th>
+                        </tr>
+                        <tr ng-repeat="data in dataGoalIndex">
+                            <td><input type="text" ng-model="data.l" title=""></td>
+                            <td><input type="text" ng-model="data.r" title=""></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col"></div>
+            </div>
             <!--<div class="row" style="margin-top: 20px">-->
                 <!--<div class="col"></div>-->
                 <!--<div class="col col-40">-->
@@ -165,6 +160,7 @@
                 <!--<div class="col"></div>-->
             <!--</div>-->
         </div>
+
         <div class="tips">
             <p>QQ : 1747768963
             </p>
