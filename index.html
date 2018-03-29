@@ -77,6 +77,49 @@
                 </tr>
             </table>
         </div>
+        <div class="pull_index compare">
+            <h2>亚盘比对</h2>
+            <div class="row">
+                <div class="col">
+                    <table>
+                        <tr>
+                            <th>上盘</th>
+                            <th>下盘</th>
+                            <th style="width: 4em">返还率</th>
+                        </tr>
+                        <tr>
+                            <td><input type="number" ng-model="odd_a_1.up" ng-change="changeA(1)" title=""></td>
+                            <td><input type="number" ng-model="odd_a_1.down" ng-change="changeA(1)" title=""></td>
+                            <td>{{odd_a_k.k1 | number:2}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{odd_a_1.up*50/odd_a_k.k1 | number:2}}</td>
+                            <td>{{odd_a_1.down*50/odd_a_k.k1 | number:2}}</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col">
+                    <table>
+                        <tr>
+                            <th>上盘</th>
+                            <th>下盘</th>
+                            <th style="width: 4em">返还率</th>
+                        </tr>
+                        <tr>
+                            <td><input type="number" ng-model="odd_a_2.up" ng-change="changeA()" title=""></td>
+                            <td><input type="number" ng-model="odd_a_2.down" ng-change="changeA()" title=""></td>
+                            <td>{{odd_a_k.k2 | number:2}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{odd_a_2.up*50/odd_a_k.k2 | number:2}}</td>
+                            <td>{{odd_a_2.down*50/odd_a_k.k2 | number:2}}</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
         <div class="pull_index">
             <h2>拉力指数</h2>
             <div class="row">

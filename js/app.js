@@ -114,6 +114,35 @@ app.controller('myCtrl', ['$scope',function(s) {
             c = arr.lose;
         return a*b*c/(a*b+a*c+b*c);
     }
+    // 亚盘对比
+    s.odd_a_1 = {};
+    s.odd_a_1.up = '';
+    s.odd_a_1.down = '';
+    s.odd_a_2 = {};
+    s.odd_a_2.up = '';
+    s.odd_a_2.down = '';
+
+    s.odd_a_k = {};
+    s.odd_a_k.k1 = 1;
+    s.odd_a_k.k2 = 1;
+
+    s.changeA = function (type) {
+        var up,down;
+        if(type === 1) {
+            up = s.odd_a_1.up;
+            down = s.odd_a_1.down;
+            if(up >0 &&down >0) {
+                s.odd_a_k.k1 = (up+down)/2;
+            }
+        }else {
+            up = s.odd_a_2.up;
+            down = s.odd_a_2.down;
+            if(up >0 &&down >0) {
+                s.odd_a_k.k2 = (up+down)/2;
+            }
+        }
+    };
+
 
     s.homeIndex = '50';
     s.visitIndex = '50';
