@@ -1,0 +1,188 @@
+
+
+.bar {
+  @include display-flex();
+  @include translate3d(0,0,0);
+  @include user-select(none);
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: $z-index-bar;
+
+  @include box-sizing(border-box);
+  padding: 0 $bar-padding-portrait;
+
+  width: 100%;
+  height: $bar-height;
+  border-width: 0;
+  border-style: solid;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid $bar-default-border;
+
+  background-color: $bar-default-bg;
+
+  /* border-width: 1px will actually create 2 device pixels on retina */
+  /* this nifty trick sets an actual 1px border on hi-res displays */
+  background-size: 0;
+  //@media (min--moz-device-pixel-ratio: 1.5),
+  //       (-webkit-min-device-pixel-ratio: 1.5),
+  //       (min-device-pixel-ratio: 1.5),
+  //       (min-resolution: 144dpi),
+  //       (min-resolution: 1.5dppx) {
+  //  border: none;
+  //  background-image: linear-gradient(0deg, $bar-default-border, $bar-default-border 50%, transparent 50%);
+  //  background-position: bottom;
+  //  background-size: 100% 1px;
+  //  background-repeat: no-repeat;
+  //}
+
+  &.bar-light {
+    @include bar-style($bar-light-bg, $bar-light-border, $bar-light-text);
+    &.bar-footer{
+      background-image: linear-gradient(180deg, $bar-light-border, $bar-light-border 50%, transparent 50%);
+    }
+  }
+  &.bar-stable {
+    @include bar-style($bar-stable-bg, $bar-stable-border, $bar-stable-text);
+    &.bar-footer{
+      background-image: linear-gradient(180deg, $bar-stable-border, $bar-stable-border 50%, transparent 50%);
+    }
+  }
+
+  // Title inside of a bar is centered
+  .title {
+    display: block;
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: $z-index-bar-title;
+    overflow: hidden;
+
+    margin: 0;
+
+    min-width: 30px;
+    height: $bar-height - .02rem;
+
+    text-align: center;
+
+    // Go into ellipsis if too small
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    font-size: $bar-title-font-size;
+    font-weight: $headings-font-weight;
+
+    line-height: $bar-height;
+    input {
+      width: 100%;
+      height: .66rem;
+      background-color: #dedede;
+      border-radius: $button-border-radius;
+      padding: 0 $button-border-radius*2;
+      font-size: .28rem;
+      position: absolute;
+      left: 0;
+      top: ($bar-height - .66rem)/2;
+    }
+
+  }
+
+  .button, button {
+    z-index: $z-index-bar-button;
+    padding: 0 $button-bar-button-padding;
+    min-width: initial;
+    min-height: $button-bar-button-height - 1;
+    font-weight: 400;
+    font-size: $button-bar-button-font-size;
+    line-height: $button-bar-button-height;
+
+    &.button-clear {
+      padding-right: 2px;
+      padding-left: 2px;
+      font-weight: 300;
+      font-size: 16px;
+
+    }
+
+    &.back-button {
+      display: block;
+      margin-right: 5px;
+      padding: 0;
+      white-space: nowrap;
+      font-weight: 400;
+      background-color: transparent;
+      .icon {
+        line-height: inherit;
+      }
+      &.hide {
+        display: none;
+      }
+    }
+
+    &.back-button.active,
+    &.back-button.activated {
+      opacity: 0.2;
+    }
+  }
+
+  .title + .buttons {
+    position: absolute;
+    top:0;
+    bottom: 0;
+    right: $bar-padding-landscape;
+    margin: auto;
+  }
+  //bar按钮样式
+  .buttons > .button {
+    min-height: $button-bar-button-height;
+    line-height: $button-bar-button-height;
+    height: 100%;
+    background: transparent;
+    //margin: ($bar-height - $button-bar-button-height)/2 0;
+    &.activated {
+      opacity: 0.7;
+    }
+  }
+
+}
+
+
+// Default styles for buttons inside of styled bars
+.bar-light {
+  .button {
+    @include button-style($bar-light-bg, $bar-light-border, $bar-light-active-bg, $bar-light-active-border, $bar-light-text);
+    @include button-clear($bar-light-text, $bar-title-font-size);
+  }
+}
+//.bar-stable {
+//  .button {
+//    @include button-style($bar-stable-bg, $bar-stable-border, $bar-stable-active-bg, $bar-stable-active-border, $bar-stable-text);
+//    @include button-clear($bar-stable-text, $bar-title-font-size);
+//  }
+//}
+
+
+.bar-header {
+  top: 0;
+  border-top-width: 0;
+  border-bottom-width: 1px;
+}
+
+
+.nav-bar-block {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: $z-index-bar;
+}
+.nav-bar-block[nav-bar="active"] .back-button {
+  display: block !important;
+}
+
+
+.nav-bar-tabs-top .bar {
+  background-image: none;
+}

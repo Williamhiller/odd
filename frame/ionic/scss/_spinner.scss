@@ -1,0 +1,51 @@
+/**
+ * Spinners
+ * --------------------------------------------------
+ */
+
+.spinner {
+  svg {
+    width: $spinner-width;
+    height: $spinner-height;
+  }
+
+  stroke: $spinner-default-stroke;
+  fill: $spinner-default-fill;
+
+  &.spinner-light {
+    stroke: $spinner-light-stroke;
+    fill: $spinner-light-fill;
+  }
+  &.spinner-stable {
+    stroke: $spinner-stable-stroke;
+    fill: $spinner-stable-fill;
+  }
+}
+
+.spinner-android {
+  stroke: #4b8bf4;
+}
+
+.spinner-ios,
+.spinner-ios-small {
+  stroke: #69717d;
+}
+
+.spinner-spiral {
+  .stop1 {
+    stop-color: $spinner-light-fill;
+    stop-opacity: 0;
+  }
+
+  &.spinner-light {
+    .stop1 {
+      stop-color: $spinner-default-fill;
+    }
+    .stop2 {
+      stop-color: $spinner-light-fill;
+    }
+  }
+  &.spinner-stable .stop2 {
+    stop-color: $spinner-stable-fill;
+  }
+}

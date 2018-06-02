@@ -1,0 +1,99 @@
+@charset "UTF-8";
+html , body {
+    min-height: 100%;
+}
+
+small {font-size: 75%}
+.table_wrap {
+    padding: 0 .24rem;
+    margin: 0 auto;
+    font-size: .28rem;
+}
+.table_wrap h2 {
+    font-size: .32rem;
+    font-weight: bold;
+    margin-top: .2rem;
+}
+.table_wrap table {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+}
+.table_wrap table th {
+    padding: 0;
+}
+.table_wrap table td {
+    padding: .12rem;
+    text-align: center;
+    max-width: 20%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.table_wrap table td.tit {
+    text-align: left;
+}
+.table_wrap table .tit,
+.table_wrap table .last {
+    width: 20%;
+}
+.table_wrap table .last {
+    text-align: center;
+}
+.table_wrap input {
+    text-align: center;
+    height: .56rem;
+    line-height: .54rem;
+    width: 100%;
+    border: none;
+    border-radius: .06rem;
+}
+.btn_wrap {
+    text-align: justify;
+}
+.btn_wrap button, .btn_wrap input {
+    display: inline-block;
+    font-size: .32rem;
+}
+.btn_wrap button {
+    width: 23.5%;
+    line-height: .54rem;
+    background-color: transparent;
+    border: 1px solid #ccc;
+    border-radius: .1rem;
+    color: #777;
+    cursor: pointer;
+}
+.btn_wrap button.on {
+    border-color: #DA2536;
+    color: #DA2536;
+}
+.btn_wrap input {
+    width: 100%;
+    text-align: left;
+    /*padding: 2px 1em 0;*/
+    margin: .2rem 0;
+    padding: 0 1em;
+    height: .72rem;
+    line-height: .68rem;
+    font-size: .28rem;
+    box-shadow: 0 0 .1rem rgba(0,0,0,0.1);
+}
+
+.pull_index {
+    text-align: center;
+}
+.pull_index h2 {
+    text-align: left;
+    margin-bottom: .2rem;
+}
+.pull_index input{
+    background-color: transparent;
+    border: 1px solid #e5e5e5;
+}
+.pull_index table td {
+    padding-bottom: 0;
+}
+.compare table td {
+    padding: .06rem;
+}
+

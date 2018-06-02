@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0"/>
     <meta name="keywords" content="赔率,赔率计算,赔率转换,欧赔,返还率计算,odd,大吉大利,晚上吃鸡"/>
     <meta name="description" content="赔率返还率转换计算" />
 
@@ -11,204 +10,42 @@
 
     <link rel="shortcut icon" href="favicon.ico">
 
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/angular.min.js"></script>
-    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="frame/css/style.css">
+    <link rel="stylesheet" href="frame/font/iconfont.css">
+    <!--引入样式-->
+
+    <link href="frame/ionic/css/ionic.css" rel="stylesheet">
+    <!--屏幕适配-->
+    <script src="frame/js/flexible.debug.js"></script>
+
+    <script src="frame/ionic/js/ionic.bundle.min.js"></script>
+
+    <!--服务-->
+    <script src="frame/js/service/globalService.js"></script>
+    <!--控制器-->
+    <script src="frame/js/controller/calcController.js"></script>
+    <script src="frame/js/controller/indexController.js"></script>
+    <script src="frame/js/controller/listController.js"></script>
+    <script src="frame/js/controller/meController.js"></script>
+    <script src="frame/js/controller/globalController.js"></script>
+    <!--路由器-->
+    <script src="frame/js/router/globalRouter.js"></script>
+    <!--指令-->
+    <script src="frame/js/directive.js"></script>
+    <!--过滤器-->
+    <script src="frame/js/filter.js"></script>
+    <!--启动-->
+    <script src="frame/js/app.js"></script>
+
+    <!--<script src="js/app.js"></script>-->
+
 </head>
 <body ng-app="myApp">
-    <div class="table_wrap" ng-controller="myCtrl">
-        <div>
-            <h2>返还率计算</h2>
-            <table>
-                <tr>
-                    <th class="tit"></th>
-                    <th>胜</th>
-                    <th>平</th>
-                    <th>负</th>
-                    <th class="last">返还率</th>
-                </tr>
-                <tr>
-                    <td class="tit"><span>赔率</span></td>
-                    <td><input type="number" ng-model="odd.win" ng-change="oddChange()"></td>
-                    <td><input type="number" ng-model="odd.draw" ng-change="oddChange()"></td>
-                    <td><input type="number" ng-model="odd.lose" ng-change="oddChange()"></td>
-                    <td class="last"><span>{{odd.kickback | number:4}}</span></td>
-                </tr>
-                <tr>
-                    <td class="tit"><span>概率</span></td>
-                    <td><span>{{prob.win*100 | number:2}}</span></td>
-                    <td><span>{{prob.draw*100 | number:2}}</span></td>
-                    <td><span>{{prob.lose*100 | number:2}}</span></td>
-                    <td class="last"></td>
-                </tr>
-            </table>
-        </div>
-        <div>
-            <h2>赔率转换</h2>
-            <div class="btn_wrap">
-                <input type="number" placeholder="其它 - 手动输入返还率" ng-model="odd_c.kickback" ng-change="oddTransfer(odd_c.kickback)">
-                <button ng-class="{'on':odd_c.kickback===89}" ng-click="oddTransfer(89)">89</button>
-                <button ng-class="{'on':odd_c.kickback===92}" ng-click="oddTransfer(92)">92</button>
-                <button ng-class="{'on':odd_c.kickback===94}" ng-click="oddTransfer(94)">94</button>
-                <button ng-class="{'on':odd_c.kickback===96}" ng-click="oddTransfer(96)">96</button>
-                <span style="display: inline-block;width: 100%"></span>
-            </div>
-            <table>
-                <tr>
-                    <th class="tit"></th>
-                    <th>胜</th>
-                    <th>平</th>
-                    <th>负</th>
-                    <th class="last">返还率</th>
-                </tr>
-                <tr>
-                    <td class="tit"><span>普通转换</span></td>
-                    <td><span>{{odd_c.win | number:3}}</span></td>
-                    <td><span>{{odd_c.draw | number:3}}</span></td>
-                    <td><span>{{odd_c.lose | number:3}}</span></td>
-                    <td class="last">{{odd_c.kickback/100 | number:4}}</td>
-                </tr>
-                <tr>
-                    <td class="tit"><span>智能转换</span></td>
-                    <td><span>{{odd_s.win | number:2}}</span></td>
-                    <td><span>{{odd_s.draw | number:2}}</span></td>
-                    <td><span>{{odd_s.lose | number:2}}</span></td>
-                    <td class="last">{{odd_s.kickback | number:4}}</td>
-                </tr>
-            </table>
-        </div>
-        <div class="pull_index compare">
-            <h2>亚盘比对</h2>
-            <div class="row">
-                <div class="col">
-                    <table>
-                        <tr>
-                            <th>上盘</th>
-                            <th>下盘</th>
-                            <th style="width: 4em">返还率</th>
-                        </tr>
-                        <tr>
-                            <td><input type="number" ng-model="odd_a_1.up" ng-change="changeA(1)" title=""></td>
-                            <td><input type="number" ng-model="odd_a_1.down" ng-change="changeA(1)" title=""></td>
-                            <td>{{odd_a_k.k1 | number:2}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{odd_a_1.up*50/odd_a_k.k1 | number:2}}</td>
-                            <td>{{odd_a_1.down*50/odd_a_k.k1 | number:2}}</td>
-                            <td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="col">
-                    <table>
-                        <tr>
-                            <th>上盘</th>
-                            <th>下盘</th>
-                            <th style="width: 4em">返还率</th>
-                        </tr>
-                        <tr>
-                            <td><input type="number" ng-model="odd_a_2.up" ng-change="changeA()" title=""></td>
-                            <td><input type="number" ng-model="odd_a_2.down" ng-change="changeA()" title=""></td>
-                            <td>{{odd_a_k.k2 | number:2}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{odd_a_2.up*50/odd_a_k.k2 | number:2}}</td>
-                            <td>{{odd_a_2.down*50/odd_a_k.k2 | number:2}}</td>
-                            <td></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="pull_index">
-            <h2>拉力指数</h2>
-            <div class="row">
-                <div class="col">
-                    <h3>主队：{{homeIndex}}</h3>
-                    <table>
-                        <tr>
-                            <th>主场</th>
-                            <th>客场</th>
-                        </tr>
-                        <tr ng-repeat="data in dataHomeIndex">
-                            <td><input type="text" ng-model="data.l" title=""></td>
-                            <td><input type="text" ng-model="data.r" title=""></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="col col-10"></div>
-                <div class="col">
-                    <h3>客队：{{visitIndex}}</h3>
-                    <table>
-                        <tr>
-                            <th>主场</th>
-                            <th>客场</th>
-                        </tr>
-                        <tr ng-repeat="data in dataVisitIndex">
-                            <td><input type="text" ng-model="data.l" title=""></td>
-                            <td><input type="text" ng-model="data.r" title=""></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="row" style="margin-top: 20px">
-                <div class="col"></div>
-                <div class="col col-40">
-                    <h3>往绩指数：{{historyIndex}} /100</h3>
-                    <table>
-                        <tr>
-                            <th>主场</th>
-                            <th>客场</th>
-                        </tr>
-                        <tr ng-repeat="data in dataHistoryIndex">
-                            <td><input type="text" ng-model="data.l" title=""></td>
-                            <td><input type="text" ng-model="data.r" title=""></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="col"></div>
-            </div>
-        </div>
-        <div class="pull_index">
-            <h2>进球指数<small>（大小球）</small></h2>
-            <div class="row">
-                <div class="col"></div>
-                <div class="col col-40">
-                    <h3>均值：{{goalIndex.average | number:2}}</h3>
-                    <table>
-                        <tr>
-                            <th>{{goalIndex.left | number:2}}</th>
-                            <th>{{goalIndex.right | number:2}}</th>
-                        </tr>
-                        <tr ng-repeat="data in dataGoalIndex">
-                            <td><input type="text" ng-model="data.l" title=""></td>
-                            <td><input type="text" ng-model="data.r" title=""></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="col"></div>
-            </div>
-            <!--<div class="row" style="margin-top: 20px">-->
-                <!--<div class="col"></div>-->
-                <!--<div class="col col-40">-->
-                    <!--<h3>历史进球：{{historyIndex}} /100</h3>-->
-                    <!--<table>-->
-
-                        <!--<tr ng-repeat="data in dataHistoryIndex">-->
-                            <!--<td><input type="text" ng-model="data.l" title=""></td>-->
-                            <!--<td><input type="text" ng-model="data.r" title=""></td>-->
-                        <!--</tr>-->
-                    <!--</table>-->
-                <!--</div>-->
-                <!--<div class="col"></div>-->
-            <!--</div>-->
-        </div>
-
-        <div class="tips">
-            <p>QQ : 1747768963
-            </p>
-        </div>
-
-    </div>
+    <ion-nav-bar class="bar-light" nav-transition="ios" align-title="center">
+        <ion-nav-back-button class="button-clear" ng-click="back()">
+            <i class="icon icon-arrow-left"></i>
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-view nav-direction="back" nav-transition="ios"></ion-nav-view>
 </body>
 </html>

@@ -1,0 +1,405 @@
+/**
+ * Tabs
+ * --------------------------------------------------
+ * A navigation bar with any number of tab items supported.
+ */
+//html[data-dpr="1"] {
+//  .tabs {
+//    height: $tabs-height;
+//  }
+//  .tab-item .icon {
+//    height: $tabs-icon-size;
+//    font-size: $tabs-icon-font-size;
+//  }
+//  .tabs-icon-top > .tabs .tab-item,
+//  .tabs-icon-top.tabs .tab-item,
+//  .tabs-icon-bottom > .tabs .tab-item,
+//  .tabs-icon-bottom.tabs .tab-item {
+//    font-size: $tabs-text-font-size-side-icon;
+//    line-height: $tabs-text-font-size;
+//  }
+//}
+//html[data-dpr="2"] {
+//  .tabs {
+//    height: $tabs-height*2;
+//  }
+//  .tab-item .icon {
+//    height: $tabs-icon-size*2;
+//    font-size: $tabs-icon-font-size*2;
+//  }
+//  .tabs-icon-top > .tabs .tab-item,
+//  .tabs-icon-top.tabs .tab-item,
+//  .tabs-icon-bottom > .tabs .tab-item,
+//  .tabs-icon-bottom.tabs .tab-item {
+//    font-size: $tabs-text-font-size-side-icon*2;
+//    line-height: $tabs-text-font-size*2;
+//  }
+//}
+//html[data-dpr="3"] {
+//  .tabs {
+//    height: $tabs-height*3;
+//  }
+//  .tab-item .icon {
+//    height: $tabs-icon-size*3;
+//    font-size: $tabs-icon-font-size*3;
+//  }
+//  .tabs-icon-top > .tabs .tab-item,
+//  .tabs-icon-top.tabs .tab-item,
+//  .tabs-icon-bottom > .tabs .tab-item,
+//  .tabs-icon-bottom.tabs .tab-item {
+//    font-size: $tabs-text-font-size-side-icon*3;
+//    line-height: $tabs-text-font-size*3;
+//  }
+//}
+.tabs {
+  @include display-flex();
+  @include flex-direction(horizontal);
+  @include justify-content(center);
+  @include translate3d(0,0,0);
+
+  @include tab-style($tabs-default-bg, $tabs-default-border, $tabs-default-text);
+  //@include tab-badge-style($tabs-default-text, $tabs-default-bg);
+
+  position: absolute;
+  bottom: 0;
+
+  z-index: $z-index-tabs;
+
+  width: 100%;
+  height: $tabs-height;
+
+  //border-style: solid;
+  border-top-width: 1px;
+
+  background-size: 0;
+  line-height: $tabs-height;
+
+  @media (min--moz-device-pixel-ratio: 1.5),
+         (-webkit-min-device-pixel-ratio: 1.5),
+         (min-device-pixel-ratio: 1.5),
+         (min-resolution: 144dpi),
+         (min-resolution: 1.5dppx) {
+    padding-top: 2px;
+    border-top: none !important;
+    border-bottom: none;
+    background-position: top;
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+  }
+
+}
+/* Allow parent element of tabs to define color, or just the tab itself */
+.tabs-light > .tabs,
+.tabs.tabs-light {
+  @include tab-style($tabs-light-bg, $tabs-light-border, $tabs-light-text);
+  //@include tab-badge-style($tabs-light-text, $tabs-light-bg);
+}
+.tabs-stable > .tabs,
+.tabs.tabs-stable {
+  @include tab-style($tabs-stable-bg, $tabs-stable-border, $tabs-stable-text);
+  //@include tab-badge-style($tabs-stable-text, $tabs-stable-bg);
+}
+@mixin tabs-striped($style, $color, $background) {
+  &.#{$style} {
+    .tabs{
+      background-color: $background;
+    }
+    .tab-item {
+      color: rgba($color, $tabs-striped-off-opacity);
+      opacity: 1;
+      .badge{
+        opacity:$tabs-striped-off-opacity;
+      }
+      &.tab-item-active,
+      &.active,
+      &.activated {
+        margin-top: -$tabs-striped-border-width;
+        color: $color;
+        border-style: solid;
+        border-width: $tabs-striped-border-width 0 0 0;
+        border-color: $color;
+      }
+    }
+  }
+  &.tabs-top{
+    .tab-item {
+      &.tab-item-active,
+      &.active,
+      &.activated {
+        .badge {
+          top: 4%;
+        }
+      }
+    }
+  }
+}
+
+@mixin tabs-background($style, $color, $border-color) {
+  .#{$style} {
+    .tabs,
+    &> .tabs{
+      background-color: $color;
+      background-image: linear-gradient(0deg, $border-color, $border-color 50%, transparent 50%);
+      border-color: $border-color;
+    }
+  }
+}
+
+@mixin tabs-color($style, $color) {
+  .#{$style} {
+    .tab-item {
+      color: rgba($color, $tabs-off-opacity);
+      opacity: 1;
+      .badge{
+        opacity:$tabs-off-opacity;
+      }
+      &.tab-item-active,
+      &.active,
+      &.activated {
+        color: $color;
+        border: 0 solid $color;
+        .badge{
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+@mixin tabs-striped-color($style, $color) {
+  &.#{$style} {
+    .tab-item {
+      color: rgba($color, $tabs-striped-off-opacity);
+      opacity: 1;
+      .badge{
+        opacity:$tabs-striped-off-opacity;
+      }
+      &.tab-item-active,
+      &.active,
+      &.activated {
+        margin-top: -$tabs-striped-border-width;
+        color: $color;
+        border: 0 solid $color;
+        border-top-width: $tabs-striped-border-width;
+        .badge{
+          top:$tabs-striped-border-width;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+@include tabs-background('tabs-background-light', $light, $bar-light-border);
+@include tabs-background('tabs-background-stable', $stable, $bar-stable-border);
+
+@include tabs-color('tabs-color-light', $light);
+@include tabs-color('tabs-color-stable', $stable);
+
+@mixin tabs-standard-color($style, $color, $off-color:$dark) {
+  &.#{$style} {
+    .tab-item {
+      color: $off-color;
+      &.tab-item-active,
+      &.active,
+      &.activated {
+        color: $color;
+      }
+    }
+
+  }
+
+  &.tabs-striped.#{$style} {
+    .tab-item {
+      &.tab-item-active,
+      &.active,
+      &.activated {
+        border-color: $color;
+        color: $color;
+      }
+    }
+
+  }
+
+}
+
+ion-tabs {
+  @include tabs-standard-color('tabs-color-active-light', $light, $dark);
+  @include tabs-standard-color('tabs-color-active-stable', $stable, $dark);
+}
+
+.tabs-top {
+  &.tabs-striped {
+    padding-bottom:0;
+    .tab-item{
+      background: #fff;
+      // animate the top bar, leave bottom for platform consistency
+      -webkit-transition: color .1s ease;
+      -moz-transition: color .1s ease;
+      -ms-transition: color .1s ease;
+      -o-transition: color .1s ease;
+      transition: color .1s ease;
+      position: relative;
+
+      &.tab-item-active,
+      &.active,
+      &.activated {
+        color: $stable;
+        &:after {
+          content: "";
+          display: block;
+          width: 50%;
+          margin: 0 auto;
+          border-width: 0px 0px $tabs-striped-border-width 0px !important;
+          border-style: solid;
+          border-color: $stable;
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+        }
+
+      }
+    }
+  }
+}
+
+/* Allow parent element to have tabs-top */
+/* If you change this, change platform.scss as well */
+.tabs-top > .tabs,
+.tabs.tabs-top{
+  top: $bar-height;
+  padding-top: 0;
+  background-position: bottom;
+  border-top-width: 0;
+  border-bottom-width: 1px;
+  z-index: $z-index-tabs +1;
+}
+.tabs.tabs-top + .tabs.tabs-top-sub {
+  top : $bar-height + $tabs-height - 0.05rem;
+  border-bottom-width: 1px;
+  border-style: solid;
+  height: $bar-height;
+  line-height: $bar-height;
+
+  .tab-item {
+    &.active {
+      color: $stable;
+    }
+  }
+}
+.tabs.tabs-top-sub {
+  background-color: #fff;
+}
+
+.tab-item {
+  @include flex(1);
+  display: block;
+  overflow: hidden;
+
+  //max-width: $tab-item-max-width;
+  height: 100%;
+
+  color: $tabs-init;
+  text-align: center;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  font-weight: 400;
+  font-size: $tabs-text-font-size;
+  font-family: $font-family-sans-serif;
+
+  border-bottom-width: 0;
+
+  //opacity: 0.6;
+  &.active {
+    color: $stable;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  &.tab-hidden{
+    display:none;
+  }
+}
+.tabs {
+   -webkit-transition: all linear 0.2s;
+   transition: all linear 0.2s;
+}
+.tabs-item-hide > .tabs,
+.tabs.tabs-item-hide{
+  -webkit-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+  bottom: - $tabs-height;
+  display: flex;
+}
+
+//.tabs-item-hide > .tabs,
+//.tabs.tabs-item-hide {
+//  display: none;
+//}
+
+.tabs-icon-top > .tabs .tab-item,
+.tabs-icon-top.tabs .tab-item {
+  font-size: $tabs-text-font-size-side-icon;
+  line-height: $tabs-text-font-size;
+}
+.tabs.tabs-icon-right {
+  .tab-item {
+    .icon {
+      display: inline-block;
+      vertical-align:sub;
+    }
+  }
+}
+
+.tab-item .icon {
+  display: block;
+  margin: 0 auto;
+  height: $tabs-icon-size;
+  font-size: $tabs-icon-font-size;
+}
+
+
+/* Navigational tab */
+
+/* Active state for tab */
+.tab-item.tab-item-active,
+.tab-item.active,
+.tab-item.activated {
+  //opacity: 1;
+
+  &.tab-item-light {
+    color: $theme;
+    background-color: $bar-light-bg;
+  }
+  &.tab-item-stable {
+    color: $stable;
+  }
+}
+
+//.item.tabs {
+//  @include display-flex();
+//  padding: 0;
+//
+//  .icon:before {
+//    position: relative;
+//  }
+//}
+
+//.tab-item.disabled,
+//.tab-item[disabled] {
+//  opacity: .4;
+//  cursor: default;
+//  pointer-events: none;
+//}
+
+//.nav-bar-tabs-top.hide ~ .view-container .tabs-top .tabs{
+//  top: 0
+//}
+//.pane[hide-nav-bar="true"] .has-tabs-top{
+//  top:$tabs-height
+//}
+
+

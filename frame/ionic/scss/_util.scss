@@ -1,0 +1,269 @@
+
+/**
+ * Utility Classes
+ * --------------------------------------------------
+ */
+
+
+//border
+.border-bottom,.border-top,.border-left {
+  border-style: solid;
+  border-color: $border-color;
+  border-width: 0;
+}
+
+.border-top {
+  border-top-width: 1px;
+}
+.border-bottom {
+  border-bottom-width: 1px;
+  /*background-image : linear-gradient(0deg,red,red 50%,transparent 50%);*/
+  /*background-size: 100% 1px;*/
+  /*background-repeat: no-repeat;*/
+  /*background-position: bottom;*/
+}
+.border-left {
+  border-left-width: 1px;
+}
+.border-top-short:before,
+.border-bottom-short:after {
+  content :"";
+  border-bottom: 1px solid $border-color;
+  display: block;
+  width: 6.86rem;
+  height: 0;
+  margin: 0 auto;
+  position: absolute;
+  left: .32rem;
+  z-index: 99;
+}
+.border-bottom-right:after {
+  content :"";
+  border-bottom: 1px solid $border-color;
+  display: block;
+  width: 7.28rem;
+  height: 0;
+  margin: 0 auto;
+  position: absolute;
+  left: .32rem;
+  z-index: 99;
+  bottom: 0;
+}
+.border-top-short:before {
+  top: 0;
+}
+.border-bottom-short:after {
+  bottom:0;
+}
+
+/**
+ * Content Padding
+ * --------------------------------------------------
+ */
+
+.padding {
+  padding: $content-padding;
+}
+.padding-small {
+  padding: $content-padding/2;
+}
+.none-padding {
+  padding: 0;
+}
+
+.padding-top,
+.padding-vertical {
+  padding-top: $content-padding;
+}
+
+.padding-right,
+.padding-horizontal {
+  padding-right: $content-padding;
+}
+
+.padding-bottom,
+.padding-vertical {
+  padding-bottom: $content-padding;
+}
+
+.padding-left,
+.padding-horizontal {
+  padding-left: $content-padding;
+}
+
+.hide {
+  display: none;
+}
+.opacity-hide {
+  opacity: 0;
+}
+.grade-b .opacity-hide,
+.grade-c .opacity-hide {
+  opacity: 1;
+  display: none;
+}
+.show {
+  //display: block;
+}
+.opacity-show {
+  opacity: 1;
+}
+.invisible {
+  visibility: hidden;
+}
+
+.keyboard-open .hide-on-keyboard-open {
+  display: none;
+}
+
+.keyboard-open .tabs.hide-on-keyboard-open + .pane .has-tabs,
+.keyboard-open .bar-footer.hide-on-keyboard-open + .pane .has-footer {
+  bottom: 0;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.disable-pointer-events {
+  pointer-events: none;
+}
+
+.enable-pointer-events {
+  pointer-events: auto;
+}
+
+.disable-user-behavior {
+  // used to prevent the browser from doing its native behavior. this doesnt
+  // prevent the scrolling, but cancels the contextmenu, tap highlighting, etc
+
+  @include user-select(none);
+  @include touch-callout(none);
+  @include tap-highlight-transparent();
+
+  -webkit-user-drag: none;
+
+  -ms-touch-action: none;
+  -ms-content-zooming: none;
+}
+
+// Fill the screen to block clicks (a better pointer-events: none) for the body
+// to avoid full-page reflows and paints which can cause flickers
+.click-block {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  z-index: $z-index-click-block;
+  @include translate3d(0, 0, 0);
+  overflow: hidden;
+}
+.click-block-hide {
+  @include translate3d(-9999px, 0, 0);
+}
+
+.no-resize {
+  resize: none;
+}
+
+.block {
+  display: block;
+  clear: both;
+  &:after {
+    display: block;
+    visibility: hidden;
+    clear: both;
+    height: 0;
+    content: ".";
+  }
+}
+
+.full-image {
+  width: 100%;
+}
+
+.clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    // Fixes Opera/contenteditable bug:
+    // http://nicolasgallagher.com/micro-clearfix-hack/#comment-36952
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+
+
+
+/**
+ * Rounded
+ * --------------------------------------------------
+ */
+
+.rounded {
+  border-radius: $border-radius-base;
+}
+
+
+/**
+ * Utility Colors
+ * --------------------------------------------------
+ * Utility colors are added to help set a naming convention. You'll
+ * notice we purposely do not use words like "red" or "blue", but
+ * instead have colors which represent an emotion or generic theme.
+ */
+
+.light, a.light {
+  color: $light;
+}
+.light-bg {
+  background-color: $light;
+}
+.light-border {
+  border-color: $button-light-border;
+}
+
+.stable, a.stable {
+  color: $stable;
+}
+.stable-bg {
+  background-color: $stable;
+}
+.stable-border {
+  border-color: $button-stable-border;
+}
+
+[collection-repeat] {
+  /* Position is set by transforms */
+  left: 0 !important;
+  top: 0 !important;
+  position: absolute !important;
+  z-index: 1;
+}
+.collection-repeat-container {
+  position: relative;
+  z-index: 1; //make sure it's above the after-container
+}
+.collection-repeat-after-container {
+  z-index: 0;
+  display: block;
+
+  /* when scrolling horizontally, make sure the after container doesn't take up 100% width */
+  &.horizontal {
+    display: inline-block;
+  }
+}
+
+// ng-show fix for windows phone
+// https://www.hoessl.eu/2014/12/on-using-the-ionic-framework-for-windows-phone-8-1-apps/
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak,
+.x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+  display: none !important;
+}

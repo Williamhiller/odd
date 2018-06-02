@@ -1,0 +1,22 @@
+
+
+<ion-tabs class="tabs-icon-top tabs-light" ng-class="{'tabs-item-hide': $root.hideTabs}">
+
+  <!-- 计算工具 -->
+  <ion-tab title="返还率计算" class="tab-item-light" icon-off="icon icon-calc" icon-on="icon icon-calc" ng-click="stateGo('tab.calc')">
+    <ion-nav-view name="tab_calc" nav-title="返还率计算" nav-direction="forward"></ion-nav-view>
+  </ion-tab>
+  <!-- 拉力指数 -->
+  <ion-tab title="拉力指数" class="tab-item-light" icon-off="icon icon-index" icon-on="icon icon-index" ng-click="stateGo('tab.index')">
+    <ion-nav-view name="tab_index" nav-title="拉力指数" nav-direction="forward"></ion-nav-view>
+  </ion-tab>
+  <!-- 赔率排序 -->
+  <ion-tab title="赔率" class="tab-item-light" icon-off="icon icon-list" icon-on="icon icon-list" ng-click="stateGo('tab.list')">
+    <ion-nav-view name="tab_list" nav-title="赔率" nav-direction="forward"></ion-nav-view>
+  </ion-tab>
+  <!-- 个人说明 -->
+  <ion-tab title="个人" class="tab-item-light" icon-off="icon icon-me" icon-on="icon icon-me" ng-click="stateGo('tab.me')">
+    <ion-nav-view name="tab_me" nav-title="个人" nav-direction="forward"></ion-nav-view>
+  </ion-tab>
+
+</ion-tabs>

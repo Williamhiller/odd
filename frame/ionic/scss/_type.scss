@@ -1,0 +1,73 @@
+
+
+p {
+  //margin: 0 0 ($line-height-computed / 2);
+  font-size: .24rem;
+  margin: 0;
+  line-height: 1.4;
+}
+// Placeholder
+// -------------------------------
+input,
+textarea {
+  @include placeholder();
+}
+textarea {
+  background-color: #f2f2f2;
+  width: 100%;
+  padding: .5em;
+  font-size: .28rem;
+  border: none;
+  resize: none;
+}
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  color: $base-color;
+  margin: 0;
+  font-weight: $headings-font-weight;
+  font-family: $headings-font-family;
+  line-height: $headings-line-height;
+
+  small {
+    font-weight: normal;
+    line-height: 1;
+  }
+}
+
+
+.a {
+  line-height: 1.4;
+}
+.a,
+a {
+  color: $link-color;
+  text-decoration: none;
+  display: inline-block;
+  border-bottom: none;
+  cursor: pointer;
+}
+//a.col {
+//  background-color: #fff;
+//  border-bottom: none;
+//  padding: 5px 0;
+//}
+//a.subdued {
+//  padding-right: 10px;
+//  color: #888;
+//  text-decoration: none;
+//  border-bottom: none;
+//  &:hover {
+//    text-decoration: none;
+//  }
+//  &:last-child {
+//    padding-right: 0;
+//  }
+//}
+a.activated {
+  //background-color: $base-background-color;
+}
+a.link {
+  line-height: 1.4;
+  text-decoration: underline;
+  //border-bottom: 1px solid $link-color;
+}
