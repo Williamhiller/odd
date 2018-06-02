@@ -46,7 +46,7 @@ angular.module('list.controller', [])
 
         var hsDetail = {};
         s.getData = function () {
-            loadScript("http://1x2d.win007.com/"+s.data.gameId+".js",function () {
+            loadScript("//1x2d.win007.com/"+s.data.gameId+".js",function () {
                 s.data.matchname = matchname_cn;
                 s.data.hometeam = hometeam_cn;
                 s.data.guestteam = guestteam_cn;
