@@ -234,7 +234,7 @@ angular.module('global.service',[])
     }])
 
     //禁止乱使用$apply ，防止报错
-    .factory('safeApply', [function($rootScope) {
+    .factory('safeApply', [function() {
         return function(scope, fn) {
             var phase = scope.$root.$$phase;
             if(phase == '$apply' || phase == '$digest') {

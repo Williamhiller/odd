@@ -4,6 +4,7 @@
 
 angular.module('list.controller', [])
     .controller('ListCtrl',['$scope',function(s){
+
         var doc = document;
         var gameScript = doc.getElementById("gameScript");
         if(gameScript) {
@@ -32,20 +33,59 @@ angular.module('list.controller', [])
             doc.body.appendChild(script);
         };
 
-        s.gameId = "";
-        s.matchname = "";
-        s.hometeam = "";
-        s.guestteam = "";
-        s.game = [];
-        s.gameDetail = [];
+        s.data = {};
+        s.data.gameId = "";
+        s.data.matchname = "";
+        s.data.hometeam = "";
+        s.data.guestteam = "";
+        s.data.infos = [{
+            name : "90"
+        },{
+            name : "test"
+        }];
+
+        var hsDetail = {};
         s.getData = function () {
-            loadScript("http://1x2d.win007.com/"+s.gameId+".js",function () {
-                s.matchname = matchname_cn;
-                s.hometeam = hometeam_cn;
-                s.guestteam = guestteam_cn;
-                s.game = game;
-                s.gameDetail = gameDetail;
+            loadScript("http://1x2d.win007.com/"+s.data.gameId+".js",function () {
+                s.data.matchname = matchname_cn;
+                s.data.hometeam = hometeam_cn;
+                s.data.guestteam = guestteam_cn;
+
+                if (typeof (gameDetail) != "undefined") {
+                    for (var i = 0; i < gameDetail.length; i++) {
+                        var data = gameDetail[i].split('^');
+                        var oddsID = parseInt(data[0]);
+                        if (!hsDetail[oddsID]) {
+                            hsDetail[oddsID] = data[1];
+                        }
+                    }
+                }
+
+                var len = game.length;
+                var infos = [];
+                for(var j = 0;j < 30 ; j++) {
+                    var info = {};
+                    var gameItem = game[j].split("|");
+                    var detailItem = hsDetail[gameItem[1]].split(";");
+                    info.name = gameItem[21];
+                    info.home = gameItem[3];
+                    info.draw = gameItem[4];
+                    info.guest = gameItem[5];
+                    info.date = detailItem[detailItem.length-2].split("|")[3];
+
+                    infos.push(info);
+                }
+                infos.sort(function (a,b) {
+                    var dateA = new Date("2018/" + a.date.replace(/-/g,"/"));
+                    var dateB = new Date("2018/" + b.date.replace(/-/g,"/"));
+                    return dateA.valueOf() - dateB.valueOf()
+                });
+
+                s.$apply(function () {
+                    s.data.infos = infos;
+                });
+
             })
-        }
+        };
 
     }]);

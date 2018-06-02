@@ -97,3 +97,33 @@ small {font-size: 75%}
     padding: .06rem;
 }
 
+.odd_list {
+    font-size: .26rem;
+    padding: .24rem;
+}
+.odd_list table {
+    width: 100%;
+}
+.odd_list tr {
+    border-bottom: 1px solid #e5e5e5;
+}
+.odd_list td {
+    padding: 5px 0;
+    line-height: 1.4;
+}
+.odd_list td.name {
+    width: 20%;
+}
+.odd_list td.odd {
+    width: 50%;
+    text-align: center;
+}
+.odd_list td.odd span {
+    display: inline-block;
+    width: 30%;
+}
+.odd_list td.date {
+    width: 30%;
+    text-align: right;
+}
+
