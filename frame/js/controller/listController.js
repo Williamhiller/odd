@@ -6,13 +6,13 @@ angular.module('list.controller', [])
     .controller('ListCtrl',['$scope',function(s){
 
         var doc = document;
-        var gameScript = doc.getElementById("gameScript");
-        if(gameScript) {
-            doc.body.removeChild(gameScript);
-        }
-
         var loadScript = function (url, callback) {
-            var script = document.createElement("script");
+            var gameScript = doc.getElementById("gameScript");
+            if(gameScript) {
+                doc.body.removeChild(gameScript);
+            }
+
+            var script = doc.createElement("script");
             script.type = "text/javascript";
             script.id = "gameScript";
             if (typeof(callback) != "undefined") {
@@ -38,15 +38,11 @@ angular.module('list.controller', [])
         s.data.matchname = "";
         s.data.hometeam = "";
         s.data.guestteam = "";
-        s.data.infos = [{
-            name : "90"
-        },{
-            name : "test"
-        }];
+        s.data.infos = [];
 
         var hsDetail = {};
         s.getData = function () {
-            loadScript("//1x2d.win007.com/"+s.data.gameId+".js",function () {
+            loadScript("http://1x2d.win007.com/"+s.data.gameId+".js",function () {
                 s.data.matchname = matchname_cn;
                 s.data.hometeam = hometeam_cn;
                 s.data.guestteam = guestteam_cn;
