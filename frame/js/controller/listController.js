@@ -3,7 +3,29 @@
  */
 
 angular.module('list.controller', [])
-    .controller('ListCtrl',['$scope',function(s){
+    .controller('ListCtrl',['$scope',"$http",function(s,$http){
+
+        $http.get('/getData?id=78654').then(function (res) {
+            var data = res.data;
+            data = data.filter(function (item) {
+                return item.type === "滚" && item.time !== "中场"
+            });
+            var newArr = [];
+            var timeArr = [];
+            data.forEach(function (item) {
+                if(item.type === "滚" && item.time !== "中场") {
+                    if(timeArr[item.time] === undefined) {
+                        timeArr.push(item.time);
+                        newArr.push(item);
+                    }
+                }
+            });
+
+
+            console.log(newArr)
+        },function (res) {
+            console.log(res)
+        });
 
         var doc = document;
         var loadScript = function (url, callback) {

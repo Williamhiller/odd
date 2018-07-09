@@ -1,0 +1,24 @@
+{
+  "name": "begin",
+  "version": "1.0.0",
+  "description": "Williamhiller to start",
+  "main": "index.js",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "jsdom": "^9.8.3"
+  },
+  "devDependencies": {
+    "express": "^4.14.0",
+    "iconv-lite": "^0.4.14",
+    "jade": "^1.11.0",
+    "jquery": "^3.3.1",
+    "request": "^2.79.0",
+    "true-html-escape": "^1.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Williamhiller Liu",
+  "license": "ISC"
+}

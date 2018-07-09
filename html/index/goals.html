@@ -1,0 +1,104 @@
+
+<ion-view title="进球指数" hide-nav-bar="false">
+    <ion-content>
+        <div class="table_wrap">
+            <div class="pull_index goal_index">
+                <h2>进球指数 <small>暂不区分主客场</small></h2>
+                <div class="row">
+                    <div class="col">
+                        <h3>主队</h3>
+                        <table>
+                            <tr>
+                                <th>主</th>
+                                <th>客</th>
+                            </tr>
+                            <tr ng-repeat="data in dataHome">
+                                <td><input type="number" ng-model="data.l" title=""></td>
+                                <td><input type="number" ng-model="data.r" title=""></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col">
+                        <h3>往绩</h3>
+                        <table>
+                            <tr>
+                                <th>主</th>
+                                <th>客</th>
+                            </tr>
+                            <tr ng-repeat="data in dataHistory">
+                                <td><input type="number" ng-model="data.l" title=""></td>
+                                <td><input type="number" ng-model="data.r" title=""></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col">
+                        <h3>客队</h3>
+                        <table>
+                            <tr>
+                                <th>主</th>
+                                <th>客</th>
+                            </tr>
+                            <tr ng-repeat="data in dataVisit">
+                                <td><input type="number" ng-model="data.l" title=""></td>
+                                <td><input type="number" ng-model="data.r" title=""></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <p style="padding: 0.32rem 15px"><button class="button button-block" ng-click="calc()">计算</button></p>
+
+            <div class="pull_index">
+                <h2>结果</h2>
+                <table>
+                    <tr>
+                        <th></th>
+                        <th colspan="2">简易模式</th>
+                        <th colspan="2">高级模式</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>指数</td>
+                        <td>平均</td>
+                        <td>指数</td>
+                        <td>平均</td>
+                    </tr>
+                    <tr>
+                        <td>主队</td>
+                        <td>{{resHome.easyIndex | number:2}}</td>
+                        <td>{{resHome.easyGoals | number:2}}</td>
+                        <td>{{resHome.hardIndex | number:2}}</td>
+                        <td>{{resHome.hardGoals | number:2}}</td>
+                    </tr>
+                    <tr>
+                        <td>客队</td>
+                        <td>{{resVisit.easyIndex | number:2}}</td>
+                        <td>{{resVisit.easyGoals | number:2}}</td>
+                        <td>{{resVisit.hardIndex | number:2}}</td>
+                        <td>{{resVisit.hardGoals | number:2}}</td>
+                    </tr>
+                    <tr>
+                        <td>往绩</td>
+                        <td>{{resHistory.easyIndex | number:2}}</td>
+                        <td>{{resHistory.easyGoals | number:2}}</td>
+                        <td>{{resHistory.hardIndex | number:2}}</td>
+                        <td>{{resHistory.hardGoals | number:2}}</td>
+                    </tr>
+                    <tr>
+                        <td>平均</td>
+                        <td>{{resAve.easyIndex | number:2}}</td>
+                        <td>{{resAve.easyGoals | number:2}}</td>
+                        <td>{{resAve.hardIndex | number:2}}</td>
+                        <td>{{resAve.hardGoals | number:2}}</td>
+                    </tr>
+                    <tr>
+                        <td>盘口</td>
+                        <td colspan="2" ng-bind-html="resAsian.easy"></td>
+                        <td colspan="2" ng-bind-html="resAsian.hard"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

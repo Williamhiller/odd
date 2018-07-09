@@ -14,13 +14,17 @@ small {font-size: 75%}
     font-weight: bold;
     margin-top: .2rem;
 }
+.table_wrap h3 {
+    line-height: 2;
+}
 .table_wrap table {
     margin: 0 auto;
     width: 100%;
     max-width: 100%;
+    line-height: 1.4;
 }
 .table_wrap table th {
-    padding: 0;
+    padding: .1rem 0;
 }
 .table_wrap table td {
     padding: .12rem;
@@ -87,11 +91,18 @@ small {font-size: 75%}
     margin-bottom: .2rem;
 }
 .pull_index input{
-    background-color: transparent;
+    /*background-color: transparent;*/
     border: 1px solid #e5e5e5;
+    background-color: #fff;
 }
 .pull_index table td {
     padding-bottom: 0;
+}
+.goal_index td {
+    padding: .04rem !important;
+}
+.goal_index .col{
+    padding: 0 .1rem;
 }
 .compare table td {
     padding: .06rem;

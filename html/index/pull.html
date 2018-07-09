@@ -1,0 +1,56 @@
+
+<ion-view title="拉力指数" hide-nav-bar="false">
+    <ion-content>
+        <div class="table_wrap">
+            <div class="pull_index">
+                <h2>拉力指数</h2>
+                <div class="row">
+                    <div class="col">
+                        <h3>主队：{{homeIndex}}</h3>
+                        <table>
+                            <tr>
+                                <th>主场</th>
+                                <th>客场</th>
+                            </tr>
+                            <tr ng-repeat="data in dataHomeIndex">
+                                <td><input type="text" ng-model="data.l" title=""></td>
+                                <td><input type="text" ng-model="data.r" title=""></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col col-10"></div>
+                    <div class="col">
+                        <h3>客队：{{visitIndex}}</h3>
+                        <table>
+                            <tr>
+                                <th>主场</th>
+                                <th>客场</th>
+                            </tr>
+                            <tr ng-repeat="data in dataVisitIndex">
+                                <td><input type="text" ng-model="data.l" title=""></td>
+                                <td><input type="text" ng-model="data.r" title=""></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 20px">
+                    <div class="col"></div>
+                    <div class="col col-40">
+                        <h3>往绩指数：{{historyIndex}} /100</h3>
+                        <table>
+                            <tr>
+                                <th>主场</th>
+                                <th>客场</th>
+                            </tr>
+                            <tr ng-repeat="data in dataHistoryIndex">
+                                <td><input type="text" ng-model="data.l" title=""></td>
+                                <td><input type="text" ng-model="data.r" title=""></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

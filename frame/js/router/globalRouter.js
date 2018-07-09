@@ -25,12 +25,35 @@ angular.module("global.router",["ionic"])
                 url: '/index',
                 views: {
                     'tab_index': {
-                        templateUrl: 'html/tab_index.html',
-                        controller: 'IndexCtrl'
+                        templateUrl: 'html/tab_index.html'
                     }
                 },
                 data : {
                     hideTabs : false
+                }
+            })
+            .state('tab.index_pull', {  // 拉力指数
+                url: '/index/pull',
+                views: {
+                    'tab_index': {
+                        templateUrl: 'html/index/pull.html',
+                        controller: 'PullCtrl'
+                    }
+                },
+                data : {
+                    hideTabs : true
+                }
+            })
+            .state('tab.index_goal', {  // 进球指数
+                url: '/index/goal',
+                views: {
+                    'tab_index': {
+                        templateUrl: 'html/index/goals.html',
+                        controller: 'GoalCtrl'
+                    }
+                },
+                data : {
+                    hideTabs : true
                 }
             })
             .state('tab.list', {  // 赔率
