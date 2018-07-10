@@ -23,21 +23,23 @@ angular.module('index.controller', [])
             s[data].forEach(function (item,index) {
                 var itemGoals = item.l + item.r;
                 var position = parseFloat(s.page.position || 2.5);
+                var pos;
                 all += itemGoals;
 
                 if(itemGoals - position > 0.5) {
-                    all_index += 1;
+                    pos = 1;
                 }else if(itemGoals - position === 0.25){
-                    all_index += 0.75;
+                    pos = 0.75;
                 }else if(itemGoals - position === 0){
-                    all_index += 0.5;
+                    pos = 0.5;
                 }else if(itemGoals - position === -0.25){
-                    all_index += 0.25;
+                    pos = 0.25;
                 }else if(itemGoals - position < -0.5){
-                    all_index += 0;
+                    pos = 0;
                 }
+                all_index += pos;
                 hard += itemGoals * (6-index);
-                hard_index += (itemGoals > 2.5 ? 1 : 0)*(6-index)
+                hard_index += pos*(6-index)
             });
 
             s[res].easyIndex = all_index / 6;
