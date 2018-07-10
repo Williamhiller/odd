@@ -29,7 +29,7 @@ function parseData(html) {
     var $ = cheerio.load(html);
     var data = {};
     // 只使用前6条记录
-    $("table.homecomp").find('tr[data-lt]').each(function () {
+    $("table.homecomp").find('tr[data-lt]').each(function (i) {
         var _this = $(this);
         var index = _this.index();
 

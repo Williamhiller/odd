@@ -8,6 +8,8 @@ angular.module('index.controller', [])
         s.dataVisit = [{},{},{},{},{},{}];
         s.dataHistory = [{},{},{},{},{},{}];
 
+        s.page = {};
+        s.page.position = '';
 
         s.resHome = {};
         s.resVisit = {};
@@ -20,8 +22,20 @@ angular.module('index.controller', [])
 
             s[data].forEach(function (item,index) {
                 var itemGoals = item.l + item.r;
+                var position = parseFloat(s.page.position || 2.5);
                 all += itemGoals;
-                all_index += itemGoals > 2.5 ? 1 : 0;
+
+                if(itemGoals - position > 0.5) {
+                    all_index += 1;
+                }else if(itemGoals - position === 0.25){
+                    all_index += 0.75;
+                }else if(itemGoals - position === 0){
+                    all_index += 0.5;
+                }else if(itemGoals - position === -0.25){
+                    all_index += 0.25;
+                }else if(itemGoals - position < -0.5){
+                    all_index += 0;
+                }
                 hard += itemGoals * (6-index);
                 hard_index += (itemGoals > 2.5 ? 1 : 0)*(6-index)
             });
