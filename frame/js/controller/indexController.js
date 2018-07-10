@@ -26,7 +26,7 @@ angular.module('index.controller', [])
                 var pos;
                 all += itemGoals;
 
-                if(itemGoals - position > 0.5) {
+                if(itemGoals - position >= 0.5) {
                     pos = 1;
                 }else if(itemGoals - position === 0.25){
                     pos = 0.75;
@@ -34,7 +34,7 @@ angular.module('index.controller', [])
                     pos = 0.5;
                 }else if(itemGoals - position === -0.25){
                     pos = 0.25;
-                }else if(itemGoals - position < -0.5){
+                }else if(itemGoals - position <= -0.5){
                     pos = 0;
                 }
                 all_index += pos;
