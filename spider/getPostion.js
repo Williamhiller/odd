@@ -18,8 +18,6 @@ module.exports = function (fn) {
 };
 function parseData($) {
     console.log($("#zhanji_01 table.pub_table").html())
-
-
 }
 
 
