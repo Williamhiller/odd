@@ -7,7 +7,6 @@ angular.module('index.controller', [])
         s.dataHome = [{},{},{},{},{},{},{},{},{},{}];
         s.dataVisit = [{},{},{},{},{},{},{},{},{},{}];
         s.dataHistory = [{},{},{},{},{},{},{},{},{},{}];
-        console.log(typeof s.dataHome[0].l === "undefined");
 
         s.page = {};
         s.page.position = '';
