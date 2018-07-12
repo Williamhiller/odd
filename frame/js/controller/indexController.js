@@ -4,9 +4,10 @@
 
 angular.module('index.controller', [])
     .controller('GoalCtrl',['$scope',"popupService","$state",function(s,popupService,$state){
-        s.dataHome = [{},{},{},{},{},{}];
-        s.dataVisit = [{},{},{},{},{},{}];
-        s.dataHistory = [{},{},{},{},{},{}];
+        s.dataHome = [{},{},{},{},{},{},{},{},{},{}];
+        s.dataVisit = [{},{},{},{},{},{},{},{},{},{}];
+        s.dataHistory = [{},{},{},{},{},{},{},{},{},{}];
+        console.log(typeof s.dataHome[0].l === "undefined");
 
         s.page = {};
         s.page.position = '';
@@ -15,15 +16,21 @@ angular.module('index.controller', [])
         s.resVisit = {};
         s.resHistory = {};
         s.resAve = {};
+        s.resPosIndex = {};
         s.resAsian = {};
 
         function calc(data,res) {
             var all = 0,all_index = 0,hard = 0,hard_index = 0;
-
-            s[data].forEach(function (item,index) {
+            var dataArr = s[data].filter(function (item) {
+                return item.l != null && typeof item.l !== "undefined";
+            });
+            var len = dataArr.length;
+            var deno = (1+len)*len/2;
+            dataArr.forEach(function (item,index) {
                 var itemGoals = item.l + item.r;
                 var position = parseFloat(s.page.position || 2.5);
                 var pos;
+
                 all += itemGoals;
 
                 if(itemGoals - position >= 0.5) {
@@ -37,16 +44,17 @@ angular.module('index.controller', [])
                 }else if(itemGoals - position <= -0.5){
                     pos = 0;
                 }
+
                 all_index += pos;
-                hard += itemGoals * (6-index);
-                hard_index += pos*(6-index)
+                hard += itemGoals * (len-index);
+                hard_index += pos*(len-index)
             });
 
-            s[res].easyIndex = all_index / 6;
-            s[res].easyGoals = all / 6;
+            s[res].easyIndex = all_index / len;
+            s[res].easyGoals = all / len;
 
-            s[res].hardIndex = hard_index / 21;
-            s[res].hardGoals = hard / 21;
+            s[res].hardIndex = hard_index / deno;
+            s[res].hardGoals = hard / deno;
         }
         
         function calcPos(level,type) {
@@ -71,6 +79,9 @@ angular.module('index.controller', [])
             s.resAve.easyGoals = (s.resHome.easyGoals + s.resVisit.easyGoals)/2;
             s.resAve.hardIndex = (s.resHome.hardIndex + s.resVisit.hardIndex)/2;
             s.resAve.hardGoals = (s.resHome.hardGoals + s.resVisit.hardGoals)/2;
+
+            s.resPosIndex.easy = s.resAve.easyIndex * (s.resAve.easyGoals/(s.page.position || 2.5));
+            s.resPosIndex.hard = s.resAve.hardIndex * (s.resAve.hardGoals/(s.page.position || 2.5));
 
             calcPos("easyGoals","easy");
             calcPos("hardGoals","hard");
