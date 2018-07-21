@@ -2,6 +2,17 @@
 <ion-view title="进球指数" hide-nav-bar="false">
     <ion-content>
         <div class="table_wrap">
+            <div class="getGoalsBox row">
+                <div class="col col-50">
+                    <input type="text" ng-model="page.id">
+                </div>
+                <div class="col">
+                    <button class="button" ng-click="getData()">澳客</button>
+                </div>
+                <div class="col">
+                    <button class="button">球探</button>
+                </div>
+            </div>
             <div class="pull_index goal_index">
                 <h2>进球指数 <small>暂不区分主客场</small></h2>
                 <div class="row">

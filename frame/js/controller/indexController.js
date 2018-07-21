@@ -3,12 +3,13 @@
  */
 
 angular.module('index.controller', [])
-    .controller('GoalCtrl',['$scope',"popupService","$state",function(s,popupService,$state){
+    .controller('GoalCtrl',['$scope',"$http","$state",function(s,$http,$state){
         s.dataHome = [{},{},{},{},{},{},{},{},{},{}];
         s.dataVisit = [{},{},{},{},{},{},{},{},{},{}];
         s.dataHistory = [{},{},{},{},{},{},{},{},{},{}];
 
         s.page = {};
+        s.page.id = "";
         s.page.position = '';
 
         s.resHome = {};
@@ -17,6 +18,16 @@ angular.module('index.controller', [])
         s.resAve = {};
         s.resPosIndex = {};
         s.resAsian = {};
+
+        s.getData = function (id) {
+            $http.get('/getData?id='+s.page.id).then(function (res) {
+                s.dataHome = res.data.dataHome;
+                s.dataVisit = res.data.dataVisit;
+                s.dataHistory = res.data.dataHistory;
+            },function (res) {
+                console.log(res)
+            });
+        };
 
         function calc(data,res) {
             var all = 0,all_index = 0,hard = 0,hard_index = 0;

@@ -3,21 +3,70 @@
  */
 var jsdom = require("jsdom");
 
-var url = "http://odds.500.com/fenxi/shuju-733800.shtml";
-jsdom.env(
-    url,  // 这里可以使用文件系统路径，或者网页链接url
-    ["https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"],
-    function(err,window) {
-        var $ = window.$;
-        var data = parseData($);
-    }
-);
+// var url = "http://www.okooo.com/soccer/match/1008111/history/";
+// jsdom.env(
+//     url,  // 这里可以使用文件系统路径，或者网页链接url
+//     ["https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"],
+//     function(err,window) {
+//         var $ = window.$;
+//         var data = parseData($);
+//     }
+// );
 
-module.exports = function (fn) {
-
+module.exports = function (match,fn) {
+    var url = "http://www.okooo.com/soccer/match/"+match+"/history/";
+    jsdom.env(
+        url,  // 这里可以使用文件系统路径，或者网页链接url
+        ["https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"],
+        function(err,window) {
+            var $ = window.$;
+            var data = parseData($);
+            fn(data)
+        }
+    );
 };
+
 function parseData($) {
-    console.log($("#zhanji_01 table.pub_table").html())
+
+    // 沿用JQuery风格
+    var data = {};
+    data.dataHome = [];
+    data.dataVisit = [];
+    data.dataHistory = [];
+
+    // 只使用前10条记录
+    $("table.homecomp").find('tr[data-lt]').each(function (i) {
+        var score = $(this).find("td").eq(3).attr("attr").split("-");
+
+        if(i < 10) {
+            data.dataHome.push({
+                l : parseInt(score[0]),
+                r : parseInt(score[1])
+            })
+        }
+    });
+    $("table.awaycomp").find('tr[data-lt]').each(function (i) {
+        var score = $(this).find("td").eq(3).attr("attr").split("-");
+
+        if(i < 10) {
+            data.dataVisit.push({
+                l : parseInt(score[0]),
+                r : parseInt(score[1])
+            })
+        }
+    });
+    $("table.vscomp").find('tr[data-lt]').each(function (i) {
+        var score = $(this).find("td").eq(3).attr("attr").split("-");
+
+        if(i < 10) {
+            data.dataHistory.push({
+                l : parseInt(score[0]),
+                r : parseInt(score[1])
+            })
+        }
+    });
+    console.log(data);
+    return data;
 }
 
 

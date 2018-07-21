@@ -7,7 +7,7 @@ var querystring = require('querystring');
 
 var contentType = require('./server/contentType.json');
 var spider = require('./spider/spider');
-var jsdomSpider = require('./spider/jsdomSpider');
+var getPostion = require('./spider/getPostion');
 
 http.createServer(function(req, res){
 
@@ -20,7 +20,7 @@ http.createServer(function(req, res){
         }else {
             if(url.split('?')[0] == '/getData') {
                 var param = querystring.parse(url.split('?')[1]);
-                jsdomSpider(function (data) {
+                getPostion(param.id,function (data) {
                     res.writeHead(200,{'Content-Type':contentType["json"]});
                     res.end(JSON.stringify(data))
                 });
