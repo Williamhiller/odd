@@ -3,45 +3,34 @@
  */
 
 var phantom = require('phantom');
+var _ph, _page, _outObj;
+var url = 'http://zq.win007.com/cn/League/2017-2018/36.html';
 
-phantom.create().then(function(ph) {
-    ph.createPage().then(function(page) {
-        page.open("http://www.okooo.com/").then(function(status) {
-            page.property('viewportSize',{width: 1024, height: 800});
+phantom.create().then(function (ph) {
+    _ph = ph;
+    return _ph.createPage();
+}).then(function (page) {
+    _page = page;
+    _page.setting('userAgent','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.75 Safari/537.36');
 
-            page.evaluate(function () {
-                console.log(90)
-            })
-            console.log(status);
-            if(status === "success"){
-                console.log(page);
-            }else {
-                console.log("Page failed to load.");
-            }
-            ph.exit(0);
-        });
+    return _page.open(url);
+}).then(function (status) {
+    console.log(status);
+
+    _page.evaluate(function () {
+        return jh;
+    }).then(function (jh) {
+        for (var key in jh) {
+            console.log(key)
+        }
+
+        _page.close();
+        _ph.exit(0);
     });
+
+}).catch(function (e) {
+    console.log(e)
 });
 
-
-// var page = require('webpage').create();
-// phantom.outputEncoding="utf-8";
-//
-// page.viewportSize = { width: 1024, height: 800 };
-// page.settings = {
-//     userAgent: 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) PhantomJS/19.0'
-// };
-// page.open('http://www.okooo.com/', function (status) {
-//
-//
-//     console.log(status);
-//     if(status === "success"){
-//         console.log(page.title);
-//     }else {
-//         console.log("Page failed to load.");
-//     }
-//     phantom.exit(0);
-//
-// });
 
 
