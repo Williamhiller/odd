@@ -4,33 +4,37 @@
 
 var phantom = require('phantom');
 var _ph, _page, _outObj;
-var url = 'http://zq.win007.com/cn/League/2017-2018/36.html';
 
-phantom.create().then(function (ph) {
-    _ph = ph;
-    return _ph.createPage();
-}).then(function (page) {
-    _page = page;
-    _page.setting('userAgent','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.75 Safari/537.36');
+var init = module.exports = function () {
 
-    return _page.open(url);
-}).then(function (status) {
-    console.log(status);
+    var url = 'http://zq.win007.com/cn/League/2017-2018/36.html';
+    phantom.create().then(function (ph) {
+        _ph = ph;
+        return _ph.createPage();
+    }).then(function (page) {
+        _page = page;
+        _page.setting('userAgent','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.75 Safari/537.36');
 
-    _page.evaluate(function () {
-        return jh;
-    }).then(function (jh) {
-        for (var key in jh) {
-            console.log(key)
-        }
+        return _page.open(url);
+    }).then(function (status) {
+        console.log(status);
 
-        _page.close();
-        _ph.exit(0);
+        _page.evaluate(function () {
+            return jh;
+        }).then(function (jh) {
+            for (var key in jh) {
+                console.log(key)
+            }
+
+            _page.close();
+            _ph.exit(0);
+        });
+
+    }).catch(function (e) {
+        console.log(e)
     });
-
-}).catch(function (e) {
-    console.log(e)
-});
+};
+init();
 
 
 
