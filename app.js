@@ -9,8 +9,8 @@ app.use(express.static('public'));
 app.get("/getData",function (req, res) {
 
     var id = req.query.id;
-    getPostion(id).then(function (data) {
-        res.json(data)
+    getPostion(id,function (data) {
+        res.json(data);
     });
 });
 app.listen(8081);

@@ -2,11 +2,8 @@
  * Created by Williamhiler on 2016/11/22.
  */
 var jsdom = require("jsdom");
-var Q = require("q");
 
 module.exports = function (match,fn) {
-    var deferred = Q.defer();
-
     var url = "http://www.okooo.com/soccer/match/"+match+"/history/";
     jsdom.env(
         url,  // 这里可以使用文件系统路径，或者网页链接url
@@ -14,11 +11,9 @@ module.exports = function (match,fn) {
         function(err,window) {
             var $ = window.$;
             var data = parseData($);
-            deferred.reject(data);
+            fn(data)
         }
     );
-
-    return deferred.promise;
 };
 
 function parseData($) {
