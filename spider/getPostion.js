@@ -2,18 +2,11 @@
  * Created by Williamhiler on 2016/11/22.
  */
 var jsdom = require("jsdom");
-
-// var url = "http://www.okooo.com/soccer/match/1008111/history/";
-// jsdom.env(
-//     url,  // 这里可以使用文件系统路径，或者网页链接url
-//     ["https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"],
-//     function(err,window) {
-//         var $ = window.$;
-//         var data = parseData($);
-//     }
-// );
+var Q = require("q");
 
 module.exports = function (match,fn) {
+    var deferred = Q.defer();
+
     var url = "http://www.okooo.com/soccer/match/"+match+"/history/";
     jsdom.env(
         url,  // 这里可以使用文件系统路径，或者网页链接url
@@ -21,9 +14,11 @@ module.exports = function (match,fn) {
         function(err,window) {
             var $ = window.$;
             var data = parseData($);
-            fn(data)
+            deferred.reject(data);
         }
     );
+
+    return deferred.promise;
 };
 
 function parseData($) {
