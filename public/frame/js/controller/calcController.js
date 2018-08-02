@@ -126,13 +126,13 @@ angular.module('calc.controller', [])
                 up = s.odd_a_1.up;
                 down = s.odd_a_1.down;
                 if(up >0 &&down >0) {
-                    s.odd_a_k.k1 = (up+down)/2;
+                    s.odd_a_k.k1 = up*down/(up+down);
                 }
             }else {
                 up = s.odd_a_2.up;
                 down = s.odd_a_2.down;
                 if(up >0 &&down >0) {
-                    s.odd_a_k.k2 = (up+down)/2;
+                    s.odd_a_k.k2 = up*down/(up+down);
                 }
             }
         };
